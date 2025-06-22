@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Team 6 악성 URL 분류</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #97aac4;
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.1em;
+      color: #555;
+    }
+    .input-section {
+        margin-bottom: 30px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .input-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px; /* 요소들 사이 간격 */
+    }
+    input[type="text"] {
+      flex-grow: 1; /* 가용 공간을 최대한 활용 */
+      max-width: 500px;
+      padding: 12px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    }
+    input[type="file"] {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+      background-color: #f8f8f8;
+      cursor: pointer;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 1em;
+      color: #fff;
+      background-color: #041830;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+    }
+    button:hover {
+      background-color: #357ab8;
+    }
+    .result-section {
+        margin-top: 30px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        display: inline-block; /* 내용물에 따라 크기 조절 */
+        min-width: 600px; /* 최소 너비 지정 */
+        text-align: left;
+    }
+    .result-item {
+        margin-bottom: 10px;
+        word-wrap: break-word;
+    }
+    .result-label {
+        font-weight: bold;
+        color: #041830;
+        margin-right: 5px;
+    }
+    .prediction-result {
+        font-size: 1.3em;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+    .file-results-list {
+        list-style-type: none; /* 리스트 점 제거 */
+        padding: 0;
+        margin-top: 20px;
+        max-height: 400px; /* 스크롤바 생성을 위한 최대 높이 */
+        overflow-y: auto; /* 내용이 많으면 스크롤 */
+        border: 1px solid #eee;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #f9f9f9;
+    }
+    .file-result-item {
+        border-bottom: 1px dashed #eee;
+        padding: 8px 0;
+        font-size: 0.95em;
+    }
+    .file-result-item:last-child {
+        border-bottom: none;
+    }
+
+    /* 결과 색상 */
+    .green { color: #28a745; }
+    .yellow { color: #ffc107; }
+    .red { color: #dc3545; }
+    .info { color: #007bff; } /* 추가 정보용 */
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 Team 6 악성 URL 분류</h1>
+        <p>방문하려는 URL을 스캔하여 가짜 웹사이트, 피싱을 미리 탐지하세요.</p>
+
+        <div class="input-section">
+            <h2>단일 URL 분석</h2>
+            <div class="input-container">
+                <input type="text" id="urlInput" placeholder="URL을 입력하세요">
+                <button onclick="analyzeURL()">분석</button>
+            </div>
+            <div id="singleUrlResultContainer" class="result-section" style="display:none;">
+                <div class="result-item">
+                    <span class="result-label">입력된 URL:</span> <span id="originalUrlDisplay"></span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">디코딩된 URL:</span> <span id="decodedUrlDisplay"></span>
+                </div>
+                <div id="predictionResult" class="prediction-result"></div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <h2>파일 업로드 분석 (URLs per line)</h2>
+            <div class="input-container">
+                <input type="file" id="fileInput" accept=".txt,.csv">
+                <button onclick="uploadFile()">파일 분석</button>
+            </div>
+            <div id="fileResultContainer" class="result-section" style="display:none;">
+                <h3 id="fileResultTitle"></h3>
+                <ul id="fileResultsList" class="file-results-list"></ul>
+            </div>
+        </div>
+
+    </div>
+    <script src="team6.js"></script>
+</body>
+</html>
