@@ -1,0 +1,15 @@
+url,label
+https://www.google.com,2
+https://www.google.com/?hl=ko,2
+https://www.naver.com,2
+https://www.naver.com/search.naver?query=chatgpt,2
+https://www.youtube.com,2
+https://www.github.com,2
+https://gptonline.ai,2
+https://school.edu,2
+https://library.university.ac.kr,2
+https://docs.python.org,2
+http://malicious-website.biz,0
+http://fake-login-site.com/login,0
+test,0
+/,0

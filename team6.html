@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Team 6 악성 URL 분류</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #97aac4;
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    input[type="text"] {
+      width: 60%;
+      padding: 12px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 1em;
+      color: #fff;
+      background-color: #041830;
+      border: none;
+      border-radius: 6px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #357ab8;
+    }
+    .result {
+      margin-top: 30px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 Team 6 악성 URL 분류</h1>
+        <p>방문하려는 URL을 스캔하여 가짜 웹사이트, 피싱을 미리 탐지하세요.</p>
+        <div class="input-container">
+            <input type="text" id="urlInput" placeholder="URL을 입력하세요">
+            <button onclick="analyzeURL()">분석</button>
+        </div>
+        <div id="resultArea"></div>
+    </div>
+    <script src="team6.js"></script>
+</body>
+</html>
